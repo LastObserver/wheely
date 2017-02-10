@@ -1,0 +1,14 @@
+{
+  "plugins": [
+    [
+      "angularjs-annotate", {
+        "add": true,
+        "explicitOnly": true
+      }
+    ]
+  ],
+  "presets": [
+    "es2015",
+    "stage-0"
+  ]
+}

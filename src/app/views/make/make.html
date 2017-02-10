@@ -1,0 +1,11 @@
+<h1 class='title'>Выберите производителя:</h1>
+<ul class='list'>
+	<li class='list__item' ng-repeat="make in $ctrl.makes">
+		<a 
+			class='list__text' 
+			href=""
+			ui-sref="layout.models({makeSlug: make.slug, makeName: make.name})"
+		> {{::make.name}}
+		</a>
+	</li>
+</ul>

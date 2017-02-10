@@ -1,0 +1,26 @@
+<!-- <a href="" ui-sref="layout.wheels({makeName:'audi',modelName:'a4',year: '2007'})">Ну еще чуть-чуть, да</a> -->
+
+
+<div class='generation' ng-repeat="gen in $ctrl.gens">
+	<h2 class='generation__title'>{{::gen.make.name+' '+gen.model.name+' '+gen.name}}</h2>
+	<div class='bodies'>
+		<h3 class='bodies__title'>Типы кузова:</h3>
+		<div class='bodies__container' ng-repeat='bodie in gen.bodies'>
+			<img class='bodies__img' ng-src="{{bodie.image}}">
+			<span class='bodies__caption' >{{$ctrl.getBodieName(bodie.title)}}</span>
+		</div>
+	</div>
+	<div class='years'>
+		<h3 class='years__title'>Годы выпуска:</h3>
+		<ul class='list _years'>
+			<li class='list__item _years' ng-repeat="year in gen.years | reverse">
+				<a 
+					class='list__text' 
+					href=""
+					ui-sref="layout.wheels({make:$ctrl.make.slug,model: model.slug,year:year})"
+				> {{::year}}
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
