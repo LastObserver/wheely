@@ -7,6 +7,7 @@ import views from './views';
 import services from './common/services';
 import './stylesheets/application.styl';
 import filters from './common/filters';
+import components from './common/components';
 
 
 angular.module('Wheely',[
@@ -14,14 +15,19 @@ angular.module('Wheely',[
 	angularRouter,
 	views,
 	services,
-	filters
+	filters,
+	components
 ])
 	.config(config)
-	.run(($http,$state,CacheFactory) => {
+	.run(($http,$state,CacheFactory,$rootScope) => {
+		'ngInject'
 		$http.defaults.cache = CacheFactory('defaultCache',{
 			storageMode: 'localStorage'
 		});
-		console.log($state.get())
+		$rootScope.$on('$stateChangeSuccess', function(event, to, toParams, from, fromParams) {
+			//save the previous state in a rootScope variable so that it's accessible from everywhere
+			$rootScope.previousState = from;
+		});
 	})
 
-angular.bootstrap(document, ['Wheely'])
+angular.bootstrap(document.documentElement, ['Wheely'], { strictDi: true })

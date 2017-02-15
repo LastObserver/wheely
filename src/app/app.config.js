@@ -6,29 +6,17 @@ export default function config(
 	$urlRouterProvider,
 	CacheFactoryProvider,
 	$stateProvider) {
+	'ngInject'
 	$locationProvider.html5Mode({
 	  enabled: true,
 	  requireBase: false
 	});
-	// var states = [
-	// 	{
-	// 		name: 'layout',
-	// 		url: '/',
-	// 	    abstract: true,
-	// 	    templateUrl: './views/layout/layout.html'
-	// 	},
-	// 	// {
-	// 	// 	name: 'make',
-	// 	// 	url: '/make',
-	// 	// 	component: 'make',
-	// 	// 	resolve: {
-	// 	// 		makes: function(wheelyService) {
-	// 	// 			return wheelyService.getAllMakes()
-	// 	// 		}
-	// 	// 	}
-	// 	// }
-	// ];
-	// states.forEach(function(state){
-	// 	$stateProvider.state(state);
-	// })
+
+	// $urlRouterProvider.rule(($injector, $location) => {
+	// 	const [path, query] = $location.url().split('?');
+
+	// 	if (path[path.length - 1] === '/') {
+	// 	  return `${path.slice(0, path.length - 1)}${query ? `?${query}` : ''}`;
+	// 	}
+	// });
 }

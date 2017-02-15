@@ -1,1 +1,57 @@
-<span>ОБМАНОЧКА</span>
+
+<div class="general">
+	<div class='images'>
+		<div class='images__wrapper'>
+			<div class='images__container' ng-repeat="bodie in $ctrl.getBodies() | limitTo:3">
+				<img class='images__image'  ng-src="{{::bodie.image}}">
+			</div>
+		</div>
+		
+	</div>
+	
+	<h1 class='general__title'>
+		Список модификаций {{::$ctrl.info.make.name+' '+$ctrl.info.model.name+' '+$ctrl.info.year+' года выпуска'}} и подходящих колес
+	</h1>
+</div>
+<div class="market" ng-repeat='market in $ctrl.sortedList'>
+	<div class='market__titlebox'>
+		<h2 class="market__title">{{::market[0].market.abbr}}</h2>
+		<span class="market__subtitle ">{{::market[0].market.name | market}}</span>
+	</div>
+	<div class='car' ng-repeat='car in market'>
+		<h2 class="car__title">{{::$ctrl.info.make.name+' '+$ctrl.info.model.name+' '+car.trim}}</h2>
+		<ul class='specs'>
+			<li class='specs__item'>
+				<span class='specs__name'>Power: </span>
+				<span class="specs__power" ng-repeat='(powerAbbr,power) in car.power'>{{power + ' ' + powerAbbr + ' | '}}</span>
+			</li>
+			<li class='specs__item'>
+				<span class='specs__name'>Engine: </span>
+				{{car.fuel}}
+			</li>
+			<li class='specs__item'>
+				<span class='specs__name'>Center bore: </span>
+				{{car.centre_bore + ' мм'}}
+			</li>
+			<li class='specs__item'>
+				<span class='specs__name'>Lug size: </span>
+				{{car.lock_text}}
+			</li>
+		</ul>
+		<table class="tires">
+			<tr>
+				<th class="tires__head">Tire</th>
+				<th class="tires__head">Rim</th>
+				<th class="tires__head">PCD</th>
+			</tr>
+			<tr ng-repeat='wheel in car.wheels'>
+				<td class="tires__item">{{wheel.front.tire}}</td>
+				<td class="tires__item">{{wheel.front.rim}}</td>
+				<td class="tires__item">{{car.bolt_pattern}}</td>
+			</tr>
+		</table>
+	</div>
+	
+</div>
+
+<!-- <pre>{{$ctrl.sortedList | json}}</pre> -->

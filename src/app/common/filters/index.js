@@ -23,4 +23,18 @@ filters.filter('reverse', function() {
   };
 });
 
+filters.filter('market',function(){
+	return function(value) {
+		var markets = {
+			"US":'США',
+			'European' : 'Европы',
+			'Southeast':'Юго-восточной Азии'
+		}
+		console.log(value)
+		var marketName = value.slice(0,value.search(' '))
+	return 'Внутренний рынок ' + markets[marketName]
+
+	}
+})
+
 export default filters.name

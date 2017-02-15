@@ -1,22 +1,17 @@
-<!-- <a href="" ui-sref="layout.years({makeName:'audi',modelName: 'a4'})">{{$ctrl.models}}</a> -->
+<a class='button_back' href="" ui-sref='{{$ctrl.previous}}' ng-show='$ctrl.isReturning'>
+	<i class="fa fa-chevron-left" aria-hidden="true"></i>
+</a>
+
 <h1 class='title'>Выберите модель<!--  от {{::$ctrl.make.name}} -->:</h1>
-<ul class='list'>
-	<li class='list__item _title'>
-		<div  class='list__title'> Фильтр: </div>
-	</li>
-	<li  class='list__item _sort'>
-		<a href='' class='list__text _sort' ng-class="$ctrl.activeFilter('All')" ng-click='$ctrl.curFilter="All"'>Все</a>
-	</li>
-	<li class='list__item _sort' ng-repeat="char in $ctrl.firstLetters">
-		<a href='' class='list__text _sort' ng-class="$ctrl.activeFilter(char)" ng-click='$ctrl.curFilter=char'>{{::char}}</a>
-	</li>
-</ul>
+
+<filter-tabs list='$ctrl.models' current='$ctrl.curFilter'></filter-tabs>
+
 <ul class='list'>
 	<li class='list__item _models' ng-repeat="model in $ctrl.models|filterList:$ctrl.curFilter">
 		<a 
 			class='list__text' 
 			href=""
-			ui-sref="layout.years({make:$ctrl.make.slug,model: model.slug})"
+			ui-sref="layout.years({make:$ctrl.make,model: model.slug})"
 		> {{::model.name}}
 		</a>
 	</li>

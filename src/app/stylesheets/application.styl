@@ -13,6 +13,22 @@ body
 	margin 0
 	background-color $bodyColor
 	
+.button
+	&_back
+		margin 0
+		left -60px
+		top 100px
+		position absolute
+		display block
+		width 60px
+		height 80px
+		background-color $itmBckColor
+		font-size 40px
+		color #ffffff
+		text-align center
+		line-height 80px
+		vertical-align middle
+		box-shadow 0 6px 10px #ccc
 	
 .header
 	height 60px
@@ -62,9 +78,11 @@ body
 	margin 0 auto 0 auto
 	display block
 	box-shadow $contentShadow
+	position relative
 	&._itemed
 		background-color $bodyColor
 		box-shadow none
+		width 840px
 
 .title
 	font-family $font
@@ -90,6 +108,8 @@ body
 		&._sort
 			margin 10px 1px 20px 1px
 		&._title
+			width 100%
+			margin 0
 			&:hover
 				transform none
 		&._years
@@ -108,7 +128,7 @@ body
 			background-color #FF5252
 			// background-color #512DA8
 		&._sort
-			padding 4px 8px 4px 8px
+			padding 4px 6px 4px 6px
 		&.active
 			background-color #FF5252
 	&__title
@@ -141,15 +161,16 @@ h2,h3
 		box-sizing content-box
 		&:hover .bodies__caption
 			opacity 0
-			transform translateX(-240px)
+			transform translateY(30px)
 	&__img
 		width 230px
+		display block
 	&__caption
-		transition all 0.5s ease-out
+		transition all 0.3s ease-out
 		opacity 1
 		position absolute
 		left 0
-		bottom 5px
+		bottom 0
 		background-color rgba($itmBckColor,0.8)
 		padding-top 10px
 		padding-bottom 10px 
@@ -164,3 +185,99 @@ h2,h3
 .years
 	width 100%
 	padding 0 right bottom left
+
+.general
+	width 840px
+	margin 0 auto 20px auto
+	background-color #ffffff
+	overflow auto
+	padding 0 0px 20px 0px
+	box-shadow $contentShadow
+	font-family $font
+	&__title
+		width 100%
+		text-align center
+		
+.images
+	padding 10px 0 10px 0
+	width 100%
+	background-color $itmBckColor
+	font-size 0
+	position relative
+	&__wrapper
+		max-width 780px
+		position relative
+		left 0px
+		right 0px
+		margin auto
+		text-align center
+	&__container
+		margin-right 10px
+		display inline-block
+		&:last-child
+			margin 0
+	&__image
+		width 250px
+		display block
+		
+.car
+	width 740px
+	margin 0 auto 20px auto
+	background-color #ffffff
+	overflow auto
+	padding 0 20px 20px 20px
+	box-shadow $contentShadow
+	&__title
+		padding-left 40px
+
+.market
+	&__titlebox
+		width 800px
+		margin 0 auto 20px auto
+		background-color $itmBckColor
+		overflow auto
+		padding 20px 20px 20px 20px
+		box-shadow $contentShadow
+	&__title
+		margin 0
+		color white
+		width 100%
+		text-align center
+		font-size 40px
+		line-height 50px
+		vertical-align middle
+		user-select none
+		cursor default
+	&__subtitle
+		color #ffffff
+		width 100%
+		text-align center
+		font-size 20px
+		font-family $font
+		display inline-block
+		
+.specs
+	list-style none
+	float left
+	margin 0
+	&__item
+		margin-bottom 10px
+		font-family $font
+		font-size 16px
+	&__name
+		font-weight 600
+		
+.tires
+	float right
+	& tr:nth-child(2n+3)
+		background-color #D1C4E9
+	& tr:first-child
+		background-color $itmBckColor
+		color #ffffff
+	&__head
+		font-family $font
+		width 120px
+		padding 4px
+	&__item
+		font-family $font
+		text-align center

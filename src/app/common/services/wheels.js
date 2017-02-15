@@ -1,6 +1,6 @@
 import {USER_KEY} from '../../app.constants';
 
-export default ($http) => {
+export default ($http,$sce) => {
 	'ngInject'
 
 	class wheelsService {
@@ -46,15 +46,17 @@ export default ($http) => {
 				});
 		};
 
-		getAllGenerations(make,model) {
+		getAllGenerations(make,model,year) {
 			var generations = [];
+			var yearUrl = year ? year + '/' : ''
 			return $http
-				.get('https://api.wheel-size.com/v1/generations/',{
+				.get('https://api.wheel-size.com/v1/models/'+make+'/'+model+'/'+yearUrl,{
 					cache:true, 
 					params: {
 						user_key: USER_KEY,
-						make: make,
-						model:model
+						// make: make,
+						// model:model,
+						// year: (year != undefined) ? year : ''
 					}
 				})
 				.then((response)=>{
@@ -62,6 +64,25 @@ export default ($http) => {
 					return generations
 				});
 		};
+
+		getAllWheels(make,model,year) {
+			var wheels = [];
+			return $http
+				.get('https://api.wheel-size.com/v1/search/by_model/',{
+					cache:true, 
+					params: {
+						user_key: USER_KEY,
+						make: make,
+						model:model,
+						year:year
+					}
+				})
+				.then((response)=>{
+					wheels = response.data;
+					return wheels
+				});
+		};
+
 
 	};
 	return new wheelsService();

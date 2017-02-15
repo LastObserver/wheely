@@ -1,25 +1,22 @@
 export default class getStartedController {
 
-	constructor(list,makeSlug,makeName){
+	constructor(list,make,$rootScope){
 		'ngInject'
-		var it = this
-		it.models = list;
-		it.make = {};
-		it.make['slug'] = makeSlug;
-		it.make['name'] = makeName;
-		it.firstLetters = [];
-		it.models.forEach((element)=>{
-			var chr = element.name.slice(0,1);
-			console.log(it.firstLetters.indexOf(chr))
-			if (it.firstLetters.indexOf(chr) == -1) {
-				it.firstLetters.push(chr)
-			}
-		})
-		it.curFilter = 'All'
+		this.models = list;
+		this.make = make
+		this.curFilter = 'All'
+		if ($rootScope.previousState.name != '') {
+			this.isReturning = true;
+			this.previous = $rootScope.previousState.name;
+		}
+		else {
+			this.isReturning = false
+			this.previous = '/';
+		}
 	}
 
-	activeFilter(char) {
-		if (char == this.curFilter) return 'active'
-		else return ''
-	}
+	// isReturning($rootScope) {
+	// 	if ($rootScope.previousState.name != '') return true
+	// 	else return false
+	// }
 }

@@ -4,12 +4,6 @@ export default class getStartedController {
 		'ngInject'
 		this.wheelsService = wheelsService;
 		this.makes = list;
-		// console.log(list)
+		this.curFilter = 'All'
 	}
-	// getdata() {
-	// 	this.wheelsService.getAllMakes().then((makes)=>{
-	// 		this.makes = makes
-	// 	});
-	// 	console.log(this.makes)
-	// }
 }

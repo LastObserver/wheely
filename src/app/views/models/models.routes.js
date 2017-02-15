@@ -4,7 +4,7 @@ import templateUrl from './models.html'
 export default ($stateProvider) => {
 	'ngInject'
 	$stateProvider.state('layout.models',{
-		url: '/make/:makeSlug',
+		url: '/make/:make',
 	    controller,
 	    controllerAs: '$ctrl',
 	    templateUrl,
@@ -13,10 +13,9 @@ export default ($stateProvider) => {
 	    },
 	    resolve: {
 	    	list: ($stateParams,wheelsService) => {
-	    		return wheelsService.getAllModels($stateParams.makeSlug).then((models)=>{return models})
+	    		return wheelsService.getAllModels($stateParams.make).then((models)=>{return models})
 	    	},
-	    	makeSlug: ($stateParams) => {return $stateParams.makeSlug},
-	    	makeName: ($stateParams) => {return $stateParams.makeName}
+	    	make: ($stateParams) => {return $stateParams.make}
 	    }
 	})
 }

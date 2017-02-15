@@ -1,0 +1,11 @@
+<ul class='list'>
+	<li class='list__item _title'>
+		<div  class='list__title'> Фильтр: </div>
+	</li>
+	<li  class='list__item _sort'>
+		<a href='' class='list__text _sort' ng-class="$ctrl.activeFilter('All')" ng-click='$ctrl.current="All"'>Все</a>
+	</li>
+	<li class='list__item _sort' ng-repeat="char in $ctrl.getChars() | orderBy: char" >
+		<a href='' class='list__text _sort' ng-class="$ctrl.activeFilter(char)" ng-click='$ctrl.current=char'>{{::char}}</a>
+	</li>
+</ul>
