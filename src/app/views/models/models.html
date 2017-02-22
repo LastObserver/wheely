@@ -1,18 +1,16 @@
-<a class='button_back' href="" ui-sref='{{$ctrl.previous}}' ng-show='$ctrl.isReturning'>
-	<i class="fa fa-chevron-left" aria-hidden="true"></i>
-</a>
 
 <h1 class='title'>Выберите модель<!--  от {{::$ctrl.make.name}} -->:</h1>
 
 <filter-tabs list='$ctrl.models' current='$ctrl.curFilter'></filter-tabs>
 
 <ul class='list'>
-	<li class='list__item _models' ng-repeat="model in $ctrl.models|filterList:$ctrl.curFilter">
+	<li class='list__item _models' ng-repeat="model in $ctrl.models | filterList: $ctrl.curFilter">
 		<a 
 			class='list__text' 
 			href=""
-			ui-sref="layout.years({make:$ctrl.make,model: model.slug})"
-		> {{::model.name}}
+			ui-sref="layout.years({make:$ctrl.make, model: model.slug})"
+		> 
+			{{::model.name}}
 		</a>
 	</li>
 </ul>

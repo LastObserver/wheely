@@ -1,6 +1,6 @@
 
 <div class="general">
-	<div class='images'>
+	<div class='images' ng-show='$ctrl.hasBodies'>
 		<div class='images__wrapper'>
 			<div class='images__container' ng-repeat="bodie in $ctrl.getBodies() | limitTo:3">
 				<img class='images__image'  ng-src="{{::bodie.image}}">
@@ -10,7 +10,7 @@
 	</div>
 	
 	<h1 class='general__title'>
-		Список модификаций {{::$ctrl.info.make.name+' '+$ctrl.info.model.name+' '+$ctrl.info.year+' года выпуска'}} и подходящих колес
+		Модификации {{::$ctrl.info.make.name+' '+$ctrl.info.model.name+' '+$ctrl.info.year+' г.'}} и подходящие колеса
 	</h1>
 </div>
 <div class="market" ng-repeat='market in $ctrl.sortedList'>

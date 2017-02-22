@@ -12,8 +12,6 @@ export default ($stateProvider) => {
 	    	list: ($stateParams,wheelsService) => {
 	    		return wheelsService.getAllGenerations($stateParams.make,$stateParams.model)
 	    	},
-	    	makeSlug: ($stateParams) => {return $stateParams.make},
-	    	modelSlug: ($stateParams) => {return $stateParams.model}
 	    }
 	})
 }

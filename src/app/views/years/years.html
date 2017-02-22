@@ -1,9 +1,9 @@
 <!-- <a href="" ui-sref="layout.wheels({makeName:'audi',modelName:'a4',year: '2007'})">Ну еще чуть-чуть, да</a> -->
 
 
-<div class='generation' ng-repeat="gen in $ctrl.gens.generations | orderBy : '-end_year'">
-	<h2 class='generation__title'>{{::$ctrl.gens.make.name+' '+$ctrl.gens.model.name+' '+gen.name}}</h2>
-	<div class='bodies'>
+<div class='generation' ng-repeat="gen in $ctrl.generations | orderBy : '-end_year'">
+	<h2 class='generation__title'>{{::$ctrl.make.name+' '+$ctrl.model.name+' '+gen.name}}</h2>
+	<div class='bodies' ng-show="$ctrl.hasGens">
 		<h3 class='bodies__title'>Типы кузова:</h3>
 		<div class='bodies__container' ng-repeat='bodie in gen.bodies'>
 			<img class='bodies__img' ng-src="{{bodie.image}}">
@@ -17,7 +17,7 @@
 				<a 
 					class='list__text' 
 					href=""
-					ui-sref="layout.wheels({make:$ctrl.make,model: $ctrl.model,year:year})"
+					ui-sref="layout.wheels({make:$ctrl.make.slug,model: $ctrl.model.slug,year:year})"
 				> {{::year}}
 				</a>
 			</li>

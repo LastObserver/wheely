@@ -30,7 +30,6 @@ filters.filter('market',function(){
 			'European' : 'Европы',
 			'Southeast':'Юго-восточной Азии'
 		}
-		console.log(value)
 		var marketName = value.slice(0,value.search(' '))
 	return 'Внутренний рынок ' + markets[marketName]
 

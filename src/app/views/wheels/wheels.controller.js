@@ -17,9 +17,12 @@ export default class getStartedController {
 		this.wheels.some((el,ind)=>{
 			if (el.generation) {
 				if (el.generation.bodies) {
-					bodieList = el.generation.bodies
+					bodieList = el.generation.bodies;
+					this.hasBodies = true;
 					return true
 				}
+			} else {
+				this.hasBodies = false;
 			}
 		});
 		return bodieList

@@ -14,6 +14,21 @@ body
 	background-color $bodyColor
 	
 .button
+	&_go
+		background-color $itmBckColor
+		padding 10px 0 10px 0
+		text-align center
+		color $itmTxtColor
+		text-decoration none
+		font-family $font
+		font-size 20px
+		width 230px
+		display block
+		margin 0 auto 0 auto
+		box-shadow 0 2px 4px #ccc
+		transition transform 0.2s ease-out
+		&:hover
+			transform scale(1.2,1.2)
 	&_back
 		margin 0
 		left -60px
@@ -48,22 +63,6 @@ body
 		font-family $fontTitle
 		user-select none
 		text-decoration none
-		
-.getstarted
-	background-color $itmBckColor
-	padding 10px 0 10px 0
-	text-align center
-	color $itmTxtColor
-	text-decoration none
-	font-family $font
-	font-size 20px
-	width 200px
-	display block
-	margin 0 auto 0 auto
-	box-shadow 0 2px 4px #ccc
-	transition transform 0.2s ease-out
-	&:hover
-		transform scale(1.2,1.2)
 	
 
 .container
@@ -191,12 +190,12 @@ h2,h3
 	margin 0 auto 20px auto
 	background-color #ffffff
 	overflow auto
-	padding 0 0px 20px 0px
 	box-shadow $contentShadow
 	font-family $font
 	&__title
-		width 100%
 		text-align center
+		margin 0
+		padding 20px
 		
 .images
 	padding 10px 0 10px 0
@@ -280,4 +279,15 @@ h2,h3
 		padding 4px
 	&__item
 		font-family $font
+		text-align center
+		
+.notfound
+	font-family $font
+	&__title
+		width 100%
+		text-align center
+	&__link
+		display block
+		width 300px
+		margin 0 auto 0 auto
 		text-align center

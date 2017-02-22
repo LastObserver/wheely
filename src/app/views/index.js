@@ -5,6 +5,7 @@ import make from './make'
 import models from './models'
 import years from './years'
 import wheels from './wheels'
+import notfound from './404'
 
 export default angular.module('Wheely.views',[
 	layout,
@@ -12,6 +13,7 @@ export default angular.module('Wheely.views',[
 	make,
 	models,
 	years,
-	wheels
+	wheels,
+	notfound
 	])
 	.name

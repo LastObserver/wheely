@@ -7,14 +7,6 @@ export default ($http,$sce) => {
 
 		constructor(){}
 
-		filterList(filter){
-			return function(itm) {
-				console.log(filter)
-				if (filter === 'All') return true
-				else return itm.name.slice(0,1) == filter
-			}
-		}
-
 		getAllMakes() {
 			var makes = [];
 			return $http
@@ -54,9 +46,6 @@ export default ($http,$sce) => {
 					cache:true, 
 					params: {
 						user_key: USER_KEY,
-						// make: make,
-						// model:model,
-						// year: (year != undefined) ? year : ''
 					}
 				})
 				.then((response)=>{

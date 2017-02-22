@@ -1,8 +1,7 @@
 export default class getStartedController {
 
-	constructor($stateParams,wheelsService,list){
+	constructor(list){
 		'ngInject'
-		this.wheelsService = wheelsService;
 		this.makes = list;
 		this.curFilter = 'All'
 	}

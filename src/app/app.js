@@ -19,14 +19,10 @@ angular.module('Wheely',[
 	components
 ])
 	.config(config)
-	.run(($http,$state,CacheFactory,$rootScope) => {
+	.run(($http,CacheFactory) => {
 		'ngInject'
 		$http.defaults.cache = CacheFactory('defaultCache',{
 			storageMode: 'localStorage'
-		});
-		$rootScope.$on('$stateChangeSuccess', function(event, to, toParams, from, fromParams) {
-			//save the previous state in a rootScope variable so that it's accessible from everywhere
-			$rootScope.previousState = from;
 		});
 	})
 

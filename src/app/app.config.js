@@ -11,12 +11,11 @@ export default function config(
 	  enabled: true,
 	  requireBase: false
 	});
-
-	// $urlRouterProvider.rule(($injector, $location) => {
-	// 	const [path, query] = $location.url().split('?');
-
-	// 	if (path[path.length - 1] === '/') {
-	// 	  return `${path.slice(0, path.length - 1)}${query ? `?${query}` : ''}`;
-	// 	}
-	// });
+	$urlRouterProvider.when('/wheely',['$state',($state)=>{
+		$state.go('layout.getstarted')
+	}])
+	$urlRouterProvider.otherwise(($injector) => {
+	    const $state = $injector.get('$state');
+	    $state.go('layout.404');
+  });
 }
