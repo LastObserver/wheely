@@ -11,7 +11,7 @@ export default ($http,$sce) => {
 			var makes = [];
 			return $http
 				.get('https://api.wheel-size.com/v1/makes/',{
-					cache:true, 
+					cache:true,
 					params: {
 						user_key: USER_KEY
 					}
@@ -26,7 +26,7 @@ export default ($http,$sce) => {
 			var models = [];
 			return $http
 				.get('https://api.wheel-size.com/v1/models/',{
-					cache:true, 
+					cache:true,
 					params: {
 						user_key: USER_KEY,
 						make: make
@@ -43,7 +43,7 @@ export default ($http,$sce) => {
 			var yearUrl = year ? year + '/' : ''
 			return $http
 				.get('https://api.wheel-size.com/v1/models/'+make+'/'+model+'/'+yearUrl,{
-					cache:true, 
+					cache:true,
 					params: {
 						user_key: USER_KEY,
 					}
@@ -58,7 +58,7 @@ export default ($http,$sce) => {
 			var wheels = [];
 			return $http
 				.get('https://api.wheel-size.com/v1/search/by_model/',{
-					cache:true, 
+					cache:true,
 					params: {
 						user_key: USER_KEY,
 						make: make,

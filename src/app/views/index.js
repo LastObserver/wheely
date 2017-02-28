@@ -7,13 +7,13 @@ import years from './years'
 import wheels from './wheels'
 import notfound from './404'
 
-export default angular.module('Wheely.views',[
-	layout,
-	getStarted,
-	make,
-	models,
-	years,
-	wheels,
-	notfound
-	])
-	.name
+export default angular.module('Wheely.views', [
+  layout,
+  getStarted,
+  make,
+  models,
+  years,
+  wheels,
+  notfound,
+])
+  .name

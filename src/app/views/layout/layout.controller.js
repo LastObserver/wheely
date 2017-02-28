@@ -1,11 +1,17 @@
-export default class layoutController {
+// TODO: http://localhost:8080/make/baojun/730 - поменять поведение content
+// TODO: именна классов с большой буквы
+//
+export default class LayoutController {
+  constructor($state) {
+    'ngInject'
 
-	constructor($state){
-		'ngInject'
-		this.$state = $state
-	}
-	hasItems() {
-		if (this.$state.current.name == 'layout.years' || this.$state.current.name == 'layout.wheels') return '_itemed'
-		else return ''
-	}
+    this.$state = $state
+  }
+
+  hasItems() {
+    const condition = ['layout.years', 'layout.wheels'].includes(this.$state.current.name)
+
+    if (condition) return '_itemed'
+    else return
+  }
 }

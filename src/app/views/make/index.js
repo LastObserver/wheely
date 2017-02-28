@@ -1,3 +1,4 @@
+// TODO: убрать ``
 import angular from 'angular'
 import routes from './make.routes'
 

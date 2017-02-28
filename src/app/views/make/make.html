@@ -2,11 +2,10 @@
 
 <filter-tabs list='$ctrl.makes' current='$ctrl.curFilter'></filter-tabs>
 
-
 <ul class='list'>
 	<li class='list__item' ng-repeat="make in $ctrl.makes | filterList: $ctrl.curFilter">
-		<a 
-			class='list__text' 
+		<a
+			class='list__text'
 			href=""
 			ui-sref="layout.models({make: make.slug})"
 		> {{::make.name}}
