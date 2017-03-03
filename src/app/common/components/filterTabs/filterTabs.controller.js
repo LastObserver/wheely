@@ -2,7 +2,7 @@ export default class filterTabsController {
 	'ngInject'
   static bindings = {
 	list: '<',
-	current: '='
+	currentkey: '='
   }
 
   getChars() {
@@ -15,9 +15,4 @@ export default class filterTabsController {
 	})
 	return this.firstLetters
   }
-
-	activeFilter(char) {
-		if (char == this.current) return 'active'
-		else return ''
-	}
 }

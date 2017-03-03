@@ -6,8 +6,6 @@ export default ($stateProvider) => {
 
   $stateProvider.state('layout', {
     abstract: true,
-    controller,
-    controllerAs: '$ctrl',
     templateUrl,
   })
 }

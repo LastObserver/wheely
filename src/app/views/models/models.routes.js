@@ -8,11 +8,6 @@ export default ($stateProvider) => {
 	    controller,
 	    controllerAs: '$ctrl',
 	    templateUrl,
-	    resolve: {
-	    	list: ($stateParams,wheelsService) => {
-	    		return wheelsService.getAllModels($stateParams.make).then((models)=>{return models})
-	    	},
-	    	make: ($stateParams) => {return $stateParams.make}
-	    }
+	    resolve: controller.resolve
 	})
 }

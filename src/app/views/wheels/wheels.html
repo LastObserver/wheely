@@ -13,7 +13,7 @@
 		Модификации {{::$ctrl.info.make.name+' '+$ctrl.info.model.name+' '+$ctrl.info.year+' г.'}} и подходящие колеса
 	</h1>
 </div>
-<div class="market" ng-repeat='market in $ctrl.sortedList'>
+<div class="market" ng-repeat='market in $ctrl.groupedWheels'>
 	<div class='market__titlebox'>
 		<h2 class="market__title">{{::market[0].market.abbr}}</h2>
 		<span class="market__subtitle ">{{::market[0].market.name | market}}</span>
@@ -53,5 +53,3 @@
 	</div>
 	
 </div>
-
-<!-- <pre>{{$ctrl.sortedList | json}}</pre> -->

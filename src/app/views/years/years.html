@@ -1,8 +1,5 @@
-<!-- <a href="" ui-sref="layout.wheels({makeName:'audi',modelName:'a4',year: '2007'})">Ну еще чуть-чуть, да</a> -->
-
-
-<div class='generation' ng-repeat="gen in $ctrl.generations | orderBy : '-end_year'">
-	<h2 class='generation__title'>{{::$ctrl.make.name+' '+$ctrl.model.name+' '+gen.name}}</h2>
+<div class='content content_generations' ng-repeat="gen in $ctrl.generations | orderBy : '-end_year'">
+	<h2>{{::$ctrl.make.name+' '+$ctrl.model.name+' '+gen.name}}</h2>
 	<div class='bodies' ng-show="$ctrl.hasGens">
 		<h3 class='bodies__title'>Типы кузова:</h3>
 		<div class='bodies__container' ng-repeat='bodie in gen.bodies'>
@@ -13,9 +10,9 @@
 	<div class='years'>
 		<h3 class='years__title'>Годы выпуска:</h3>
 		<ul class='list _years'>
-			<li class='list__item _years' ng-repeat="year in gen.years | reverse">
+			<li class='list__item _years' ng-repeat="(index,year) in gen.years | orderBy : reverse">
 				<a 
-					class='list__text' 
+					class='list__text'
 					href=""
 					ui-sref="layout.wheels({make:$ctrl.make.slug,model: $ctrl.model.slug,year:year})"
 				> {{::year}}

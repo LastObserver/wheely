@@ -1,16 +1,18 @@
 
-<h1 class='title'>Выберите модель<!--  от {{::$ctrl.make.name}} -->:</h1>
-
-<filter-tabs list='$ctrl.models' current='$ctrl.curFilter'></filter-tabs>
-
-<ul class='list'>
-	<li class='list__item _models' ng-repeat="model in $ctrl.models | filterList: $ctrl.curFilter">
-		<a 
-			class='list__text' 
-			href=""
-			ui-sref="layout.years({make:$ctrl.make, model: model.slug})"
-		> 
-			{{::model.name}}
-		</a>
-	</li>
-</ul>
+<div class="content">
+    <h1 class='title'>Выберите модель<!--  от {{::$ctrl.make.name}} -->:</h1>
+    
+    <filter-tabs list='$ctrl.models' currentkey='$ctrl.currentFilterKey'></filter-tabs>
+    
+    <ul class='list'>
+        <li class='list__item _models' ng-repeat="model in $ctrl.models | filter : $ctrl.filterTabs($ctrl.currentFilterKey)">
+            <a 
+                class='list__text' 
+                href=""
+                ui-sref="layout.years({make:$ctrl.make, model: model.slug})"
+            > 
+                {{::model.name}}
+            </a>
+        </li>
+    </ul>
+</div>

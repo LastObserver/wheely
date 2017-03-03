@@ -1,7 +1,12 @@
-export default class notFoundController {
-	constructor(from){
+export default class NotFoundController {
+	static resolve = {
+		resolvedFromState($stateParams){
+			return $stateParams.from
+		}
+	}
+	constructor(resolvedFromState){
 		'ngInject'
-		this.from = from
+		this.from = resolvedFromState
 		console.log('not found')
 	}
 }

@@ -1,15 +1,15 @@
 // TODO: curFilter
-export default class getStartedController {
+export default class MakeController {
   static resolve = {
     resolvedMakes(wheelsService) {
       return wheelsService.getAllMakes()
-    },
+    }
   }
 
-  constructor(resolvedMakes) {
+  constructor(resolvedMakes,wheelsService) {
     'ngInject'
-
-    this.makes = resolvedMakes
-    this.curFilter = 'All'
+    this.filterTabs = wheelsService.filterTabs;
+    this.makes = resolvedMakes;
+    this.currentFilterKey = '';
   }
 }

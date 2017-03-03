@@ -8,8 +8,6 @@ export default ($stateProvider) => {
 		controller,
 		controllerAs: '$ctrl',
 		templateUrl,
-		resolve: {
-			from: ($stateParams) => {return $stateParams.from}
-		}
+		resolve: controller.resolve
 	})
 }
