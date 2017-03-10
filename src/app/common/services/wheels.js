@@ -1,6 +1,7 @@
+import angular from 'angular'
 import {USER_KEY} from '../../app.constants';
 
-export default ($http,$sce) => {
+export default ($http,$sce,$q) => {
     'ngInject'
 
     class WheelsService {
@@ -16,7 +17,6 @@ export default ($http,$sce) => {
 
 
         getAllMakes() {
-            var makes = [];
             return $http
                 .get('https://api.wheel-size.com/v1/makes/',{
                     cache:true,
@@ -24,14 +24,10 @@ export default ($http,$sce) => {
                         user_key: USER_KEY
                     }
                 })
-                .then((response)=>{
-                    makes = response.data;
-                    return makes
-                });
+                .then(({data}) => data);
         };
 
         getAllModels(make) {
-            var models = [];
             return $http
                 .get('https://api.wheel-size.com/v1/models/',{
                     cache:true,
@@ -40,14 +36,10 @@ export default ($http,$sce) => {
                         make: make
                     }
                 })
-                .then((response)=>{
-                    models = response.data;
-                    return models
-                });
+                .then(({data}) => data);
         };
 
         getAllGenerations(make,model,year) {
-            var generations = [];
             var yearUrl = year ? year + '/' : ''
             return $http
                 .get('https://api.wheel-size.com/v1/models/'+make+'/'+model+'/'+yearUrl,{
@@ -58,12 +50,28 @@ export default ($http,$sce) => {
                 })
                 .then((response)=>{
                     generations = response.data;
-                    return generations
+                    // использовать $q.defer()
+                    // или использовать $q как конструктор
+                    return new $q((resolve,reject)=>{
+                        let isEmpty = angular.equals(generations,{}) || !generations;
+                        if (isEmpty) {
+                            reject(new Error('Данные не найдены!'))
+                        } else {
+                            resolve(generations)
+                        };
+                    });
+                    // или можно просто возвращать соответствующие методы 
+                    let isEmpty = angular.equals(generations,{}) || !generations;
+                    if (isEmpty) {
+                        return $q.reject(new Error('Данные не найдены!'))
+                    } else {
+                        return $q.resolve(generations)
+                    };
+
                 });
         };
 
         getAllWheels(make,model,year) {
-            var wheels = [];
             return $http
                 .get('https://api.wheel-size.com/v1/search/by_model/',{
                     cache:true,
@@ -74,10 +82,7 @@ export default ($http,$sce) => {
                         year:year
                     }
                 })
-                .then((response)=>{
-                    wheels = response.data;
-                    return wheels
-                });
+                .then(({data}) => data);
         };
 
 
