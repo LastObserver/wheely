@@ -48,27 +48,7 @@ export default ($http,$sce,$q) => {
                         user_key: USER_KEY,
                     }
                 })
-                .then((response)=>{
-                    generations = response.data;
-                    // использовать $q.defer()
-                    // или использовать $q как конструктор
-                    return new $q((resolve,reject)=>{
-                        let isEmpty = angular.equals(generations,{}) || !generations;
-                        if (isEmpty) {
-                            reject(new Error('Данные не найдены!'))
-                        } else {
-                            resolve(generations)
-                        };
-                    });
-                    // или можно просто возвращать соответствующие методы 
-                    let isEmpty = angular.equals(generations,{}) || !generations;
-                    if (isEmpty) {
-                        return $q.reject(new Error('Данные не найдены!'))
-                    } else {
-                        return $q.resolve(generations)
-                    };
-
-                });
+                .then(({data}) => data);
         };
 
         getAllWheels(make,model,year) {

@@ -16,22 +16,22 @@ export default function config(
     $state.go('layout.404');
   });
 
-  $provide.factory('emptyDataInterceptor', ['$q',function($q){
+  $provide.factory('emptyDataInterceptor', ['$q',$q => {
     return {
 
-      'response': function({data}){
+      'response': function(response){
+        let data = response.data
         let isEmpty = angular.equals(data,{}) || data == false;
         let defered = $q.defer();
         if (isEmpty) {
           defered.reject('Данные не найдены!')
         } else {
-          defered.resolve(data)
+          defered.resolve(response)
         };
-        console.log(data)
         return defered.promise
       }
 
-    } 
+    }
   }])
 
   $httpProvider.interceptors.push('emptyDataInterceptor')
