@@ -1,13 +1,16 @@
+import angular from 'angular';
+
 export default function config(
   $httpProvider,
   $locationProvider,
   $urlRouterProvider,
+  CacheFactoryProvider,
+  UIRouterMetatagsProvider,
   $provide) {
   'ngInject';
 
   $locationProvider.html5Mode({
     enabled: true,
-    // TODO: requireBase: true
     requireBase: true,
   });
 
@@ -16,23 +19,29 @@ export default function config(
     $state.go('layout.404');
   });
 
-  $provide.factory('emptyDataInterceptor', ['$q',$q => {
-    return {
+  UIRouterMetatagsProvider
+    .setTitleSuffix(' | Wheely')
+    .setDefaultTitle('Wheely')
+    .setOGURL(false);
 
-      'response': function(response){
-        let data = response.data
-        let isEmpty = angular.equals(data,{}) || data == false;
-        let defered = $q.defer();
-        if (isEmpty) {
-          defered.reject('Данные не найдены!')
-        } else {
-          defered.resolve(response)
-        };
-        return defered.promise
+  angular.extend(CacheFactoryProvider.defaults, {
+    storageMode: 'localStorage',
+  });
+
+
+  $provide.factory('emptyDataInterceptor', ['$q', $q => ({
+    response(response) {
+      const data = response.data;
+      const isEmpty = !data || angular.equals(data, {}) || data.length === 0;
+      const defered = $q.defer();
+      if (isEmpty) {
+        defered.reject('Данные не найдены!');
+      } else {
+        defered.resolve(response);
       }
+      return defered.promise;
+    },
+  })]);
 
-    }
-  }])
-
-  $httpProvider.interceptors.push('emptyDataInterceptor')
+  $httpProvider.interceptors.push('emptyDataInterceptor');
 }

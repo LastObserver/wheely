@@ -1,11 +1,11 @@
-<ul class='list'>
-	<li class='list__item _title'>
-		<div  class='list__title'> Фильтр: </div>
-	</li>
-	<li  class='list__item _sort'>
-		<a href='' class='list__text _sort' ng-class="{active : '' === $ctrl.currentkey}" ng-click='$ctrl.currentkey=""'>Все</a>
-	</li>
-	<li class='list__item _sort' ng-repeat="char in $ctrl.getChars() | orderBy: char" >
-		<a href='' class='list__text _sort' ng-class="{active : char === $ctrl.currentkey}" ng-click='$ctrl.currentkey=char'>{{::char}}</a>
-	</li>
-</ul>
+<div class="list-wrapper">
+	<span class="list-title">Фильтр: </span>
+	<ul class='list _filter'>
+		<li  class='list__item _sort'>
+			<a href='' class='list__text _sort' ng-class="{active : '' === $ctrl.currentKey}" ng-click='$ctrl.currentKey=""'>Все</a>
+		</li>
+		<li class='list__item _sort' ng-repeat="char in $ctrl.getChars() | orderBy: char" >
+			<a href='' class='list__text _sort' ng-class="{active : char === $ctrl.currentKey}" ng-click='$ctrl.currentKey=char' ng-bind="::char"></a>
+		</li>
+	</ul>
+</div>

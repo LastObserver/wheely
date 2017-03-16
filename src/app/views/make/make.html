@@ -1,16 +1,15 @@
 <div class="content">
 	<h1 class='title'>Выберите производителя:</h1>
 	
-	<filter-tabs list='$ctrl.makes' currentkey='$ctrl.currentFilterKey'></filter-tabs>
+	<filter-tabs list='$ctrl.makes' current-key='$ctrl.currentFilterKey'></filter-tabs>
 	
 	<ul class='list'>
 		<li class='list__item' ng-repeat="make in $ctrl.makes | filter : $ctrl.filterTabs($ctrl.currentFilterKey)">
-			<a
-				class='list__text'
+			<a  class='list__text'
 				href=""
 				ui-sref="layout.models({make: make.slug})"
-			> {{::make.name}}
-			</a>
+				ng-bind="::make.name"
+			></a>
 		</li>
 	</ul>
 </div>

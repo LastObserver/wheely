@@ -1,8 +1,7 @@
-
 <div class="general">
-	<div class='images' ng-show='$ctrl.hasBodies'>
+	<div class='images' >
 		<div class='images__wrapper'>
-			<div class='images__container' ng-repeat="bodie in $ctrl.getBodies() | limitTo:3">
+			<div class='images__container' ng-repeat="bodie in $ctrl.wheels.carBodies | limitTo:3">
 				<img class='images__image'  ng-src="{{::bodie.image}}">
 			</div>
 		</div>
@@ -10,10 +9,10 @@
 	</div>
 	
 	<h1 class='general__title'>
-		Модификации {{::$ctrl.info.make.name+' '+$ctrl.info.model.name+' '+$ctrl.info.year+' г.'}} и подходящие колеса
+		Модификации {{::$ctrl.info.make.name+' '+$ctrl.info.model.name+' '+$ctrl.year+' г.'}} и подходящие колеса
 	</h1>
 </div>
-<div class="market" ng-repeat='market in $ctrl.groupedWheels'>
+<div class="market" ng-repeat='market in $ctrl.wheels.markets'>
 	<div class='market__titlebox'>
 		<h2 class="market__title">{{::market[0].market.abbr}}</h2>
 		<span class="market__subtitle ">{{::market[0].market.name | market}}</span>
@@ -23,19 +22,19 @@
 		<ul class='specs'>
 			<li class='specs__item'>
 				<span class='specs__name'>Power: </span>
-				<span class="specs__power" ng-repeat='(powerAbbr,power) in car.power'>{{power + ' ' + powerAbbr + ' | '}}</span>
+				<span class="specs__power" ng-repeat='(powerAbbr,power) in car.power'>{{::power + ' ' + powerAbbr + ' | '}}</span>
 			</li>
 			<li class='specs__item'>
 				<span class='specs__name'>Engine: </span>
-				{{car.fuel}}
+				{{::car.fuel}}
 			</li>
 			<li class='specs__item'>
 				<span class='specs__name'>Center bore: </span>
-				{{car.centre_bore + ' мм'}}
+				{{::car.centre_bore + ' мм'}}
 			</li>
 			<li class='specs__item'>
 				<span class='specs__name'>Lug size: </span>
-				{{car.lock_text}}
+				{{::car.lock_text}}
 			</li>
 		</ul>
 		<table class="tires">
@@ -45,9 +44,9 @@
 				<th class="tires__head">PCD</th>
 			</tr>
 			<tr ng-repeat='wheel in car.wheels'>
-				<td class="tires__item">{{wheel.front.tire}}</td>
-				<td class="tires__item">{{wheel.front.rim}}</td>
-				<td class="tires__item">{{car.bolt_pattern}}</td>
+				<td class="tires__item">{{::wheel.front.tire}}</td>
+				<td class="tires__item">{{::wheel.front.rim}}</td>
+				<td class="tires__item">{{::car.bolt_pattern}}</td>
 			</tr>
 		</table>
 	</div>

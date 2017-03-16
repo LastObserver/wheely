@@ -1,18 +1,18 @@
-export default class filterTabsController {
-	'ngInject'
+export default class FilterTabsController {
+  'ngInject'
   static bindings = {
-	list: '<',
-	currentkey: '='
+    list: '<',
+    currentKey: '=',
   }
 
   getChars() {
-	this.firstLetters = [];
-	this.list.forEach((element)=>{
-		var chr = element.name.slice(0,1);
-		if (this.firstLetters.indexOf(chr) == -1) {
-			this.firstLetters.push(chr)
-		}
-	})
-	return this.firstLetters
+    this.firstLetters = [];
+    this.list.forEach(element => {
+      const chr = element.name.slice(0, 1);
+      if (!this.firstLetters.includes(chr)) {
+        this.firstLetters.push(chr);
+      }
+    });
+    return this.firstLetters;
   }
 }

@@ -11,12 +11,11 @@
 		<h3 class='years__title'>Годы выпуска:</h3>
 		<ul class='list _years'>
 			<li class='list__item _years' ng-repeat="(index,year) in gen.years | orderBy : reverse">
-				<a 
-					class='list__text'
+				<a  class='list__text'
 					href=""
 					ui-sref="layout.wheels({make:$ctrl.make.slug,model: $ctrl.model.slug,year:year})"
-				> {{::year}}
-				</a>
+					ng-bind="::year"
+				></a>
 			</li>
 		</ul>
 	</div>
