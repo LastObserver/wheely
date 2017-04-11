@@ -48,9 +48,9 @@ export default ($http) => {
       return $http
         .get('https://api.wheel-size.com/v1/makes/', {
           cache: true,
-          params: {
-            user_key: USER_KEY,
-          },
+          // params: {
+          //   user_key: USER_KEY,
+          // },
         })
         .then(({ data }) => data);
     }

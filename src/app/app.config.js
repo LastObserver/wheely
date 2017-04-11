@@ -1,4 +1,5 @@
 import angular from 'angular';
+import { USER_KEY } from './app.constants';
 
 export default function config(
   $httpProvider,
@@ -40,6 +41,13 @@ export default function config(
         defered.resolve(response);
       }
       return defered.promise;
+    },
+    request(config) {
+      if (config.url.indexOf('api.wheel-size.com') !== -1) {
+        config.params = !config.params ? {} : config.params;
+        config.params.user_key = USER_KEY;
+      }
+      return config;
     },
   })]);
 
